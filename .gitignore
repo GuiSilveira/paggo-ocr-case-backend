@@ -45,7 +45,7 @@ lerna-debug.log*
 .env.production
 
 # storage folder src/storage
-src/storage
+/storage
 
 # temp directory
 .temp
