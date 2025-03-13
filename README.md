@@ -10,6 +10,75 @@ Este repositório contém o backend do Paggo OCR Case, desenvolvido com **NestJS
 
 ---
 
+## Estrutura do Projeto
+
+```bash
+paggo-ocr-case-backend/
+│-- build/                  # Diretório de build
+│-- dist/                   # Código transpilado do TypeScript
+│-- node_modules/           # Dependências do projeto
+│-- prisma/                 # Configuração do Prisma ORM
+│-- src/                    # Código-fonte principal
+│   ├── auth/               # Módulo de autenticação
+│   ├── decorators/         # Decoradores reutilizáveis
+│   ├── enums/              # Definição de enums
+│   ├── file/               # Manipulação de arquivos
+│   ├── guards/             # Guardas de rota
+│   ├── llm/                # Integração com modelos de linguagem
+│   ├── ocr/                # Processamento OCR
+│   ├── prisma/             # Configuração adicional do Prisma
+│   ├── templates/          # Templates para emails e respostas
+│   ├── user/               # Módulo de usuários
+│   ├── app.controller.ts   # Controlador principal
+│   ├── app.module.ts       # Módulo raiz
+│   ├── app.service.ts      # Serviço principal
+│   ├── main.ts             # Arquivo de inicialização
+│-- storage/                # Diretório de armazenamento
+│-- .dockerignore           # Arquivos ignorados pelo Docker
+│-- .env.development        # Configuração específica para ambiente de desenvolvimento
+│-- .env.production         # Configuração específica para produção
+│-- .gitignore              # Arquivos ignorados pelo Git
+│-- .prettierrc             # Configuração do Prettier
+│-- docker-compose.yml      # Docker Compose para ambiente dev
+│-- Dockerfile.dev          # Dockerfile para desenvolvimento
+│-- Dockerfile.prod         # Dockerfile para produção
+│-- eng.traineddata         # Modelo treinado para OCR (inglês)
+│-- por.traineddata         # Modelo treinado para OCR (português)
+│-- eslint.config.mjs       # Configuração do ESLint
+│-- package.json            # Dependências e scripts npm
+│-- package-lock.json       # Lockfile do npm
+│-- README.md               # Documentação do projeto
+```
+
+---
+
+## Configuração do Arquivo `.env.development`
+
+Para rodar o projeto corretamente, configure as seguintes variáveis no arquivo `.env.development`:
+
+```env
+# Configuração do Banco de Dados
+DB_HOST=db
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=admin
+DB_NAME=paggo
+DATABASE_URL=postgresql://postgres:admin@db:5432/paggo?schema=public
+
+# Configuração de Segurança
+JWT_SECRET=sua_chave_secreta
+GEMINI_API_KEY=sua_chave_gemini
+
+# Configuração de Email (Ethereal)
+ETHEREAL_USER=seu_email@exemplo.com
+ETHEREAL_PASSWORD=sua_senha_email
+ETHEREAL_HOST=smtp.ethereal.email
+ETHEREAL_PORT=587
+ETHEREAL_PASS=sua_senha_email
+```
+
+---
+
 ## Como Rodar o Projeto
 
 ### 1. Rodando com Docker (Modo Desenvolvimento)
@@ -336,75 +405,6 @@ Aqui estão algumas melhorias que podem ser implementadas no projeto:
 4. **Monitoramento e Logging** - Adicionar integração com ferramentas como Winston para logging estruturado e Sentry para monitoramento de erros.
 5. **Escalabilidade** - Melhorar a escalabilidade do backend, utilizando Kubernetes para orquestração dos containers.
 6. **Melhoria no OCR** - Utilizar modelos de Machine Learning mais avançados para melhorar a precisão do reconhecimento de texto.
-
----
-
-## Configuração do Arquivo `.env.development`
-
-Para rodar o projeto corretamente, configure as seguintes variáveis no arquivo `.env.development`:
-
-```env
-# Configuração do Banco de Dados
-DB_HOST=db
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=admin
-DB_NAME=paggo
-DATABASE_URL=postgresql://postgres:admin@db:5432/paggo?schema=public
-
-# Configuração de Segurança
-JWT_SECRET=sua_chave_secreta
-GEMINI_API_KEY=sua_chave_gemini
-
-# Configuração de Email (Ethereal)
-ETHEREAL_USER=seu_email@exemplo.com
-ETHEREAL_PASSWORD=sua_senha_email
-ETHEREAL_HOST=smtp.ethereal.email
-ETHEREAL_PORT=587
-ETHEREAL_PASS=sua_senha_email
-```
-
----
-
-## Estrutura do Projeto
-
-```bash
-paggo-ocr-case-backend/
-│-- build/                  # Diretório de build
-│-- dist/                   # Código transpilado do TypeScript
-│-- node_modules/           # Dependências do projeto
-│-- prisma/                 # Configuração do Prisma ORM
-│-- src/                    # Código-fonte principal
-│   ├── auth/               # Módulo de autenticação
-│   ├── decorators/         # Decoradores reutilizáveis
-│   ├── enums/              # Definição de enums
-│   ├── file/               # Manipulação de arquivos
-│   ├── guards/             # Guardas de rota
-│   ├── llm/                # Integração com modelos de linguagem
-│   ├── ocr/                # Processamento OCR
-│   ├── prisma/             # Configuração adicional do Prisma
-│   ├── templates/          # Templates para emails e respostas
-│   ├── user/               # Módulo de usuários
-│   ├── app.controller.ts   # Controlador principal
-│   ├── app.module.ts       # Módulo raiz
-│   ├── app.service.ts      # Serviço principal
-│   ├── main.ts             # Arquivo de inicialização
-│-- storage/                # Diretório de armazenamento
-│-- .dockerignore           # Arquivos ignorados pelo Docker
-│-- .env.development        # Configuração específica para ambiente de desenvolvimento
-│-- .env.production         # Configuração específica para produção
-│-- .gitignore              # Arquivos ignorados pelo Git
-│-- .prettierrc             # Configuração do Prettier
-│-- docker-compose.yml      # Docker Compose para ambiente dev
-│-- Dockerfile.dev          # Dockerfile para desenvolvimento
-│-- Dockerfile.prod         # Dockerfile para produção
-│-- eng.traineddata         # Modelo treinado para OCR (inglês)
-│-- por.traineddata         # Modelo treinado para OCR (português)
-│-- eslint.config.mjs       # Configuração do ESLint
-│-- package.json            # Dependências e scripts npm
-│-- package-lock.json       # Lockfile do npm
-│-- README.md               # Documentação do projeto
-```
 
 ---
 
