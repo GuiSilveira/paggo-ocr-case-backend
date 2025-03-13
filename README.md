@@ -130,7 +130,7 @@ Caso queira rodar o projeto sem Docker, siga os passos abaixo:
 1. Certifique-se de ter **Node.js** (versão 16 ou superior) e **PostgreSQL** instalados.
 2. Clone o repositório:
    ```sh
-   git clone https://github.com/seu-usuario/paggo-ocr-case-backend.git
+   git clone https://github.com/GuiSilveira/paggo-ocr-case-backend.git
    cd paggo-ocr-case-backend
    ```
 3. Instale as dependências:
