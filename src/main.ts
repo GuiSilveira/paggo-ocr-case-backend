@@ -8,6 +8,8 @@ async function bootstrap() {
   app.enableShutdownHooks();
 
   app.enableCors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     exposedHeaders: ['Content-Disposition', 'Content-Type'],
   });
 
